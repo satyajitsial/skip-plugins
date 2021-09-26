@@ -29,8 +29,8 @@ For example, configure this plugin on a service by adding this section to your d
 	plugins:
 	- name: skip-plugins
 	  service: {SERVICE}
-	  config: 
-		  plugin_names: {PLUGIN_NAMES}
+	  config:
+	    plugin_names: {PLUGIN_NAMES}
 
 SERVICE is the id or name of the service that this plugin configuration will target.
 PLUGIN_NAMES is the name of the plugin or list of plugin Names to be skipped.
@@ -49,8 +49,8 @@ For example, configure this plugin on a route by adding this section to your dec
 	plugins:
 	- name: skip-plugins
 	  route: {ROUTE}
-  	config: 
-		  plugin_names: {PLUGIN_NAMES}
+  	  config:
+	    plugin_names: {PLUGIN_NAMES}
 
 ROUTE is the id or name of the route that this plugin configuration will target.
 PLUGIN_NAMES is the name of the plugin or list of plugin Names to be skipped.
