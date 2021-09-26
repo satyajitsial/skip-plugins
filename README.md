@@ -21,6 +21,12 @@ git clone https://github.com/satyajitsial/skip-plugins
 cd skip-plugins
 $ luarocks install kong-plugin-skip-plugins-0.1.0-1.all.rock
 ```
+After Installing the Plugin using any of the above steps . Add the Plugin Name in Kong.conf
+
+```
+plugins = bundled,skip-plugins
+```
+
 # Configuration Reference
 
 ## Enable the plugin on a service
