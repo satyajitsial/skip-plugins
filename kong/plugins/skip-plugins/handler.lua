@@ -64,8 +64,9 @@ end
 
 -- validate the skipped PluginName
 local function validatePluginName(conf)
-    local pluginNames = trim(conf.plugin_names) ;
-    if(pluginName == nil) then
+    local inputPluginNames = conf.plugin_names ;
+    local pluginNames = trim(inputPluginNames) ;
+    if (string.len(pluginNames) == 0) then
       kong.log.err("#### skip-plugins: Plugin Name is Empty")
       return kong.response.exit(400, { message = "skip-plugins : pluginName is Empty" })
     end
