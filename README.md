@@ -1,7 +1,7 @@
 # Kong skip-plugins Plugin
 ## Overview
 This plugin will take the list of Plugin Names and skips the Execution of those Plugins in the Request Cycle .
-This is mainly dsigned to skip the execution of global plugins for a specific service or route.
+This is mainly designed to skip the execution of global plugins for a specific service or route.
 This will also try to solve the issue raised here  https://github.com/Kong/kong/discussions/7289
 
 ## Tested in Kong Release
@@ -10,23 +10,29 @@ Kong Enterprise 2.1.4.4
 ## Installation
 ### Recommended
 ```
-git clone https://github.com/satyajitsial/skip-plugins
-cd skip-plugins
+$ git clone https://github.com/satyajitsial/skip-plugins
+$ cd skip-plugins
 $ luarocks make kong-plugin-skip-plugins-0.1.0-1.rockspec
 ```
 ### Other
 
 ```
-git clone https://github.com/satyajitsial/skip-plugins
-cd skip-plugins
+$ git clone https://github.com/satyajitsial/skip-plugins
+$ cd skip-plugins
 $ luarocks install kong-plugin-skip-plugins-0.1.0-1.all.rock
 ```
 After Installing the Plugin using any of the above steps . Add the Plugin Name in Kong.conf
 
 ```
 plugins = bundled,skip-plugins
-```
 
+```
+### Restart Kong
+
+```
+kong restart
+
+```
 # Configuration Reference
 
 ## Enable the plugin on a service
@@ -41,11 +47,18 @@ For example, configure this plugin on a service by making the following request:
 ### Declarative(YAML)
 For example, configure this plugin on a service by adding this section to your declarative configuration file:
 			
-	plugins:
-	- name: skip-plugins
-	  service: {SERVICE}
-	  config:
-	    plugin_names: {PLUGIN_NAMES}
+	services : 
+	 name: {SERVICE}
+	 plugins:
+	 - name: skip-plugins
+	 config:
+	   plugin_names: {PLUGIN_NAMES}
+	 enabled: true
+	 protocols:
+	 - grpc
+	 - grpcs
+	 - http
+	 - https
 
 SERVICE is the id or name of the service that this plugin configuration will target.
 PLUGIN_NAMES is the name of the plugin or list of plugin Names to be skipped.
@@ -61,11 +74,18 @@ For example, configure this plugin on a route with:
 ### Declarative(YAML)
 For example, configure this plugin on a route by adding this section to your declarative configuration file:
 
-	plugins:
-	- name: skip-plugins
-	  route: {ROUTE}
-  	  config:
-	    plugin_names: {PLUGIN_NAMES}
+	services : 
+	 name: {ROUTE}
+	 plugins:
+	 - name: skip-plugins
+	 config:
+	   plugin_names: {PLUGIN_NAMES}
+	 enabled: true
+	 protocols:
+	 - grpc
+	 - grpcs
+	 - http
+	 - https
 
 ROUTE is the id or name of the route that this plugin configuration will target.
 PLUGIN_NAMES is the name of the plugin or list of plugin Names to be skipped.
