@@ -9,7 +9,8 @@ Kong Enterprise 2.1.4.4
 
 ## Installation
 ```
-$ luarocks install skip-plugins
+$ luarocks make
+$ luarocks install kong-plugin-skip-plugins-0.1.0-1.all.rock
 ```
 
 # Configuration Reference
