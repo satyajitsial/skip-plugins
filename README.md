@@ -8,11 +8,19 @@ This will also try to solve the issue raised here  https://github.com/Kong/kong/
 Kong Enterprise 2.1.4.4
 
 ## Installation
+### Recommended
 ```
-$ luarocks make
+git clone https://github.com/satyajitsial/skip-plugins
+cd skip-plugins
+$ luarocks make kong-plugin-skip-plugins-0.1.0-1.rockspec
+```
+### Other
+
+```
+git clone https://github.com/satyajitsial/skip-plugins
+cd skip-plugins
 $ luarocks install kong-plugin-skip-plugins-0.1.0-1.all.rock
 ```
-
 # Configuration Reference
 
 ## Enable the plugin on a service
